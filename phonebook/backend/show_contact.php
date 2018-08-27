@@ -18,13 +18,6 @@ $dbconn = connectToDB();
 $selectQuery = "SELECT * FROM phonebook.persons WHERE phonebook.persons.id =" . "$id";
 //$queryResult = pg_query($selectQuery) or die('Query failed: ' . pg_last_error());
 $queryResult = doQuery($dbconn, $selectQuery);
-
-
-/*$dbconn = pg_connect("host=localhost dbname=phonebook user=postgres password=postgres") or die('Could not connect: ' . pg_last_error());
-$selectQuery = "SELECT * FROM phonebook.persons WHERE phonebook.persons.id =" . "$id";
-$queryResult = pg_query($selectQuery) or die('Query failed: ' . pg_last_error());*/
-
-//$row = pg_fetch_row($queryResult, null, PGSQL_ASSOC);
 $row = mysqli_fetch_array($queryResult);
 freeResultAndClose($dbconn, $queryResult);
 

@@ -18,9 +18,7 @@ while ($row = mysqli_fetch_array($queryResult)) {
 }
 
 // Free queryResultset
-//pg_free_result($queryResult);
 freeResultAndClose($dbconn, $queryResult);
-//echo sizeof($rows);
 $myJSON = json_encode($rows);
 
 echo $myJSON;

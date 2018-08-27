@@ -1,5 +1,5 @@
 <?php
-function connectToDB(){ 
+function connectToDB(){
     $conn = mysqli_connect("localhost", "root", "", "phonebook")
         or die('Could not connect: ' . mysqli_connect_errno());
     return $conn;

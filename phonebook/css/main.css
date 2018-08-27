@@ -1,38 +1,44 @@
- h1{
-    color: darkred;
-    font-family: sans-serif;
-    margin-left: 0.3em;
+ h1 {
+   color: darkred;
+   font-family: sans-serif;
+   margin-left: 0.3em;
  }
- form {
-            font-family: sans-serif;
-            font-size: 0.9em;
-        }
-        table {
-            border-spacing: 13px;
-        }
-        .text_to_top{
-            vertical-align:top;
-        }
-        input, select{
-            padding-top: 6px;
-            padding-bottom: 6px;
-            border: 1px solid #ccd;
-            border-radius: 4px;
-        }
-        input[name=full_name]{
-            padding-right: 70px;
-        }
-        input[name=e_mail]{
-            padding-right: 200px;
-        }
 
-        .sweet_btn {
-            padding-top: 6px;
-            padding-bottom: 6px;
-            padding-left: 20px;
-            padding-right: 20px;
-            background-color: #98FB98;
-            border: 1px solid #ccd;
-            border-radius: 9px;
-            font-size: 1em;
-        }
+ form {
+   font-family: sans-serif;
+   font-size: 0.9em;
+ }
+
+ table {
+   border-spacing: 13px;
+ }
+
+ .text_to_top {
+   vertical-align: top;
+ }
+
+ input, select {
+   padding-top: 6px;
+   padding-bottom: 6px;
+   border: 1px solid #ccd;
+   border-radius: 4px;
+ }
+
+ input[name=full_name] {
+   padding-right: 70px;
+ }
+
+ input[name=e_mail] {
+   padding-right: 200px;
+ }
+
+ .sweet_btn {
+   padding-top: 6px;
+   padding-bottom: 6px;
+   padding-left: 20px;
+   padding-right: 20px;
+   background-color: #98FB98;
+   border: 1px solid #ccd;
+   border-radius: 9px;
+   font-size: 1em;
+ }

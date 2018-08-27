@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 //retrieve id
 $id;
-if (isset($_REQUEST['id'])){
+if (isset($_REQUEST['id'])) {
     $id = $_REQUEST['id'];
 }
 
@@ -24,4 +24,3 @@ freeResultAndClose($dbconn, $queryResult);
 $myJSON = json_encode($row);
 
 echo $myJSON;
-?>

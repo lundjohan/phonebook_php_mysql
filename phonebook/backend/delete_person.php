@@ -12,4 +12,3 @@ $queryResult = doQuery($dbconn, $query);
 freeResultAndClose($dbconn, $queryResult);
 
 echo(json_encode($obj));
-?>

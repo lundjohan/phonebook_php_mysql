@@ -8,13 +8,13 @@ $selectQuery = "SELECT * FROM phonebook.persons ORDER BY $orderBy";
 $queryResult = doQuery($dbconn, $selectQuery);
 $rows = array();
 while ($row = mysqli_fetch_array($queryResult)) {
-        $person = new stdClass();
-        $person->id = $row['id'];
-        $person->firstName =$row['first_name'];
-        $person->lastName = $row['last_name'];
-        $person->email = $row['email_address'];
-        $person->phoneNumber = $row['phone_number'];
-        array_push($rows, $person);
+    $person = new stdClass();
+    $person->id = $row['id'];
+    $person->firstName =$row['first_name'];
+    $person->lastName = $row['last_name'];
+    $person->email = $row['email_address'];
+    $person->phoneNumber = $row['phone_number'];
+    array_push($rows, $person);
 }
 
 // Free queryResultset
@@ -22,4 +22,3 @@ freeResultAndClose($dbconn, $queryResult);
 $myJSON = json_encode($rows);
 
 echo $myJSON;
-?>

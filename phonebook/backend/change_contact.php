@@ -13,5 +13,4 @@ $queryResult = doQuery($dbconn, $selectQuery);
 freeResultAndClose($dbconn, $queryResult);
 
 //go to showing_persons page
-header( 'Location: ../show_persons.html' );
-?>
+header('Location: ../show_persons.html');

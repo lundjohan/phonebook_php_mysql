@@ -1,9 +1,9 @@
 <?php
-if (empty($_POST['submit'])){
-    die( 'Form is not submitted');
+if (empty($_POST['submit'])) {
+    die('Form is not submitted');
 }
-if (empty($_POST["first_name"]) || empty($_POST["last_name"]) ){
-    die( 'First name or last name is not filled in.');
+if (empty($_POST["first_name"]) || empty($_POST["last_name"])) {
+    die('First name or last name is not filled in.');
 }
 $firstName = $_POST["first_name"];
 $lastName = $_POST["last_name"];
@@ -19,5 +19,4 @@ $dbconn = connectToDB();
     // Free resultset
     freeResultAndClose($dbconn, $result);
     //go to showing_persons page
-    header( 'Location: ../show_persons.html' );
-?>
+    header('Location: ../show_persons.html');

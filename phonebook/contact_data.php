@@ -1,5 +1,5 @@
 <?php
-include("database.php");
+include("backend/database.php");
 //new contact OR changing contact
 $newContact = true;
 $first_time = true;
@@ -63,7 +63,7 @@ if (!$output_form){
   freeResultAndClose($dbconn, $result);
 
   //go to showing_persons page
-  header('Location: ../show_contacts.php');
+  header('Location: show_contacts.php');
 }
 //first time and changing contact -> retrieve person from database
 elseif (!$newContact) {
@@ -84,7 +84,7 @@ elseif (!$newContact) {
 
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>

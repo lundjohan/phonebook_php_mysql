@@ -23,7 +23,7 @@ function registerListeners() {
 }
 
 function startNewEventWindow() {
-  window.location.href = "backend/contact_data.php";
+  window.location.href = "contact_data.php";
 }
 
 function onChangeSelect() {
@@ -36,13 +36,13 @@ function onChangeSelect() {
 function changeBtnClicked(evt) {
   var btnId = evt.target.id;
   var contactId = getContactIdFromBtn(btnId);
-  window.location.href = "backend/contact_data.php?id=" + contactId;
+  window.location.href = "contact_data.php?id=" + contactId;
 }
 
 function deleteBtnClicked(evt) {
   var btnId = evt.target.id;
   var contactId = getContactIdFromBtn(btnId);
-  window.location.href = "backend/delete_person.php?id=" + contactId;
+  window.location.href = "backend/delete_contact.php?id=" + contactId;
 }
 //somestring_12 -> 12
 function getContactIdFromBtn(btnId) {

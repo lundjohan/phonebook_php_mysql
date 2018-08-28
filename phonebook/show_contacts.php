@@ -38,10 +38,10 @@ freeResultAndClose($dbconn, $queryResult);
   <button id="add_btn" class="sweet_btn">Add Person</button>
   <span>Order by:</span>
   <select id="orderOptions">
-        <option value="id">Id</option>
-        <option value="first_name">First Name</option>
-        <option value="last_name">Last Name</option>
-        <option value="email_address">E-mail</option>
+        <option value="id" <?php if ($orderBy ==='id'){echo " selected='selected'";} ?> >Id</option>
+        <option value="first_name" <?php if ($orderBy ==='first_name'){echo " selected='selected'";} ?> >First Name</option>
+        <option value="last_name" <?php if ($orderBy ==='last_name'){echo " selected='selected'";} ?> >Last Name</option>
+        <option value="email_address" <?php if ($orderBy ==='email_address'){echo " selected='selected'";} ?> >E-mail</option>
   </select>
 
 
@@ -63,7 +63,7 @@ freeResultAndClose($dbconn, $queryResult);
         <td><button id = delete_".$row['id'] ." class = deleteBtn>Delete</td>
       </tr>";
     }
- ?>
+  ?>
   </table>
 </body>
 

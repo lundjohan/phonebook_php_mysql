@@ -1,8 +1,6 @@
 <?php
 //receive id for person than should be removed
-$obj = file_get_contents('php://input');//json_decode($_POST["id"], false); <= doesnt work
-$idObj = json_decode($obj);
-$idNr = $idObj->id;
+$idNr = $_REQUEST['id'];
 //database operation
 include 'database.php';
 $dbconn = connectToDB();
@@ -11,4 +9,5 @@ $queryResult = doQuery($dbconn, $query);
 // Free queryResultset
 freeResultAndClose($dbconn, $queryResult);
 
-echo(json_encode($obj));
+//go to page
+header('Location: ../show_contacts.php');

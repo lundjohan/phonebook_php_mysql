@@ -63,7 +63,7 @@ if (!$output_form){
   freeResultAndClose($dbconn, $result);
 
   //go to showing_persons page
-  header('Location: ../show_persons.html');
+  header('Location: ../show_contacts.php');
 }
 //first time and changing contact -> retrieve person from database
 elseif (!$newContact) {

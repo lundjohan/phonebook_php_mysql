@@ -31,7 +31,7 @@ freeResultAndClose($dbconn, $queryResult);
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <link rel="stylesheet" type="text/css" href="css/show_persons.css">
-<!--  <script type="text/javascript" src="js/show_persons.js"></script>-->
+  <script type="text/javascript" src="js/show_contacts.js"></script>
 </head>
 
 <body>
@@ -59,8 +59,8 @@ freeResultAndClose($dbconn, $queryResult);
       echo "<tr><td>" . $row['id'] ."</td><td>" .
       $row['first_name'] . "</td><td>" .$row['last_name'] . "</td><td>" . $row['email_address'] . "</td>".
         "<td>".$row['phone_number'] . "</td>
-        <td><button id = change_".$row['id'] ." class = btnInsideRow>Change</button></td>
-        <td><button id = delete_".$row['id'] ." class = btnInsideRow>Delete</td>
+        <td><button id = change_".$row['id'] ." class = changeBtn>Change</button></td>
+        <td><button id = delete_".$row['id'] ." class = deleteBtn>Delete</td>
       </tr>";
     }
  ?>

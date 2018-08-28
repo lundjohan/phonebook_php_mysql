@@ -92,7 +92,7 @@ elseif (!$newContact) {
   if ($newContact){
     echo '<h1>Add Contact</h1>';
   }
-  else /*changing_contact*/{
+  else {
     echo '<h1>Change Contact</h1>';
   }
   ?>
@@ -103,25 +103,25 @@ elseif (!$newContact) {
       <tr>
         <td>First Name:</td>
         <td>
-          <input type="text" name="first_name" value=<?php echo $first_name?>>
+          <input type="text" name="first_name" value='<?php echo $first_name?>'>
         </td>
       </tr>
       <tr>
         <td>Last Name:</td>
         <td>
-          <input type="text" name="last_name" value=<?php echo $last_name?>>
+          <input type="text" name="last_name" value='<?php echo $last_name?>'>
         </td>
       </tr>
       <tr>
         <td>E-mail:</td>
         <td>
-          <input type="text" name="e_mail" value=<?php echo $e_mail?>>
+          <input type="text" name="e_mail" value='<?php echo $e_mail?>'>
         </td>
       </tr>
       <tr>
         <td>Phone Number:</td>
         <td>
-          <input type="text" name="phone_nr" value=<?php echo $phone_nr?>>
+          <input type="text" name="phone_nr" value='<?php echo $phone_nr?>'>
         </td>
       </tr>
       <tr>

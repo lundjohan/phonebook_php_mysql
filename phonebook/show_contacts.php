@@ -59,8 +59,8 @@ freeResultAndClose($dbconn, $queryResult);
       echo "<tr><td>" . $row['id'] ."</td><td>" .
       $row['first_name'] . "</td><td>" .$row['last_name'] . "</td><td>" . $row['email_address'] . "</td>".
         "<td>".$row['phone_number'] . "</td>
-        <td id = change_".$row['id'] ." class = btnInsideRow>Change</td>
-        <td id = delete_".$row['id'] ." class = btnInsideRow>Delete</td>
+        <td><button id = change_".$row['id'] ." class = btnInsideRow>Change</button></td>
+        <td><button id = delete_".$row['id'] ." class = btnInsideRow>Delete</td>
       </tr>";
     }
  ?>

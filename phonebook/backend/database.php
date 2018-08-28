@@ -1,4 +1,8 @@
 <?php
+/*
+ Convenient methods to abstract away which database is used.
+   Parameters might need to change in these functions in case of change to different RDBMS however.
+*/
 function connectToDB()
 {
     $conn = mysqli_connect("localhost", "root", "", "phonebook")

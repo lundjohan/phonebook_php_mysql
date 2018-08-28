@@ -1,4 +1,10 @@
 <?php
+/*
+This file can represent 1. Adding a new contact. 2. Changing an exisiting contact.
+  It knows the difference by checking that the incoming $_REQUEST['id'] value is valid (Changing) or not (Adding).
+This file is self referencing (recursive) => if form is not properly written by user,
+  then it will be shown to user which form data he needs to do better.
+*/
 include("backend/database.php");
 //new contact OR changing contact
 $newContact = true;

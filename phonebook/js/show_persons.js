@@ -17,7 +17,7 @@ function registerListeners() {
 }
 
 function startNewEventWindow() {
-  window.location.href = "add_person.html";
+  window.location.href = "backend/contact_data.php";
 }
 
 function onChangeSelect() {
@@ -143,5 +143,5 @@ function affirmDelete() {
 function changeRow(contactId) {
   //stores variable as global, it can now be accessed from other html page.
   localStorage["idContact"] = contactId;
-  window.location.href = "change_contact.html?id=" + contactId;
+  window.location.href = "backend/contact_data.php?id=" + contactId;
 }

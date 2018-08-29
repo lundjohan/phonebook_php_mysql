@@ -55,18 +55,16 @@ if (!$output_form){
   $dbconn = connectToDB();
   $query;
   if ($newContact){
-    $query = "INSERT INTO phonebook.persons (first_name, last_name, email_address, phone_number)
+    $query = "INSERT INTO " . $GLOBALS['database'] . ".persons (first_name, last_name, email_address, phone_number)
     values ('$first_name', '$last_name', '$e_mail', '$phone_nr')";
   }
   else{
-    $query = "UPDATE phonebook.persons
+    $query = "UPDATE " . $GLOBALS['database'] . ".persons
     SET first_name='$first_name', last_name='$last_name', email_address='$e_mail',  phone_number='$phone_nr'
     WHERE id=$id";
   }
   $result = doQuery($dbconn, $query);
-
-  // Free resultset
-  freeResultAndClose($dbconn, $result);
+  closeDB($dbconn);
 
   //go to showing_persons page
   header('Location: show_contacts.php');
@@ -74,7 +72,7 @@ if (!$output_form){
 //first time and changing contact -> retrieve person from database
 elseif (!$newContact) {
     $dbconn = connectToDB();
-    $selectQuery = "SELECT * FROM phonebook.persons WHERE phonebook.persons.id =" . "$id";
+    $selectQuery = "SELECT * FROM " .$GLOBALS['database'].".persons WHERE " . $GLOBALS['database'] . ".persons.id =" . "$id";
     $queryResult = doQuery($dbconn, $selectQuery);
     $row = mysqli_fetch_array($queryResult);
     freeResultAndClose($dbconn, $queryResult);

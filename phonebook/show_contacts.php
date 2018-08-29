@@ -9,7 +9,7 @@ else{
 }
 //retrieve from database
 $dbconn = connectToDB();
-$selectQuery = "SELECT * FROM phonebook.persons ORDER BY $orderBy";
+$selectQuery = "SELECT * FROM " . $GLOBALS['database'] . ".persons ORDER BY $orderBy";
 $queryResult = doQuery($dbconn, $selectQuery);
 $rows = array();
 while ($row = mysqli_fetch_array($queryResult)) {

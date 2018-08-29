@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$user = "id6948683_root";
-$pwd = "banan";
-$database = "id6948683_phonebook";
+$user = "root";
+$pwd = "";
+$database = "phonebook";
 /*
  Convenient methods to abstract away which database is used.
    Parameters might need to change in these functions in case of change to different RDBMS however.

@@ -36,7 +36,7 @@ freeResultAndClose($dbconn, $queryResult);
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="stylesheet" type="text/css" href="css/show_persons.css">
+  <link rel="stylesheet" type="text/css" href="css/show_contacts.css">
   <script type="text/javascript" src="js/show_contacts.js"></script>
 </head>
 

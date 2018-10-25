@@ -1,5 +1,10 @@
 <?php
 include 'backend/database.php';
+/*
+This file show the contacts to the user.
+*/
+
+/*Retrieve list sort order from users choice*/
 $orderBy;
 if (isset($_REQUEST['orderBy'])){
   $orderBy = $_REQUEST['orderBy'];
@@ -7,7 +12,8 @@ if (isset($_REQUEST['orderBy'])){
 else{
   $orderBy = 'id';
 }
-//retrieve from database
+
+//Retrieve data from database
 $dbconn = connectToDB();
 $selectQuery = "SELECT * FROM " . $GLOBALS['database'] . ".persons ORDER BY $orderBy";
 $queryResult = doQuery($dbconn, $selectQuery);
@@ -44,8 +50,6 @@ freeResultAndClose($dbconn, $queryResult);
         <option value="email_address" <?php if ($orderBy ==='email_address'){echo " selected='selected'";} ?> >E-mail</option>
   </select>
 
-
-  <!--This table will be completed in Javascript-->
   <table id="persons_table">
     <tr>
       <th>Id</th>
@@ -54,7 +58,9 @@ freeResultAndClose($dbconn, $queryResult);
       <th>E-mail</th>
       <th>Phone number</th>
     </tr>
+
 <?php
+/*Complete table with data from database*/
     foreach ($rows as $row){
       echo "<tr><td>" . $row['id'] ."</td><td>" .
       $row['first_name'] . "</td><td>" .$row['last_name'] . "</td><td>" . $row['email_address'] . "</td>".
@@ -66,5 +72,4 @@ freeResultAndClose($dbconn, $queryResult);
   ?>
   </table>
 </body>
-
 </html>

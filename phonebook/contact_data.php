@@ -1,16 +1,21 @@
 <?php
 /*
-This file can represent 1. Adding a new contact. 2. Changing an exisiting contact.
+This file can represent
+  1. Adding a new contact.
+  2. Changing an exisiting contact.
   It knows the difference by checking that the incoming $_REQUEST['id'] value is valid (Changing) or not (Adding).
 This file is self referencing (recursive) => if form is not properly written by user,
   then it will be shown to user which form data he needs to do better.
 */
 include("backend/database.php");
+
 //new contact OR changing contact
-$newContact = true;
+$newContact = false;
 $first_time = true;
 $output_form = false;
 
+/*case id == -1 => this file deals with new Contact,
+  otherwise changing contact.*/
 $id = '-1';
 $first_name = '';
 $last_name = '';
@@ -20,9 +25,10 @@ $phone_nr = '';
 //if it exists, retrieve id
 if (isset($_REQUEST['id'])) {
     $id = $_REQUEST['id'];
-    if ($_REQUEST['id'] != '-1'){
-      $newContact = false;
-    }
+}
+
+if ($id == '-1'){
+  $newContact = true;
 }
 
 if (isset ($_POST['submit_contact'])){
@@ -38,20 +44,20 @@ else{
 //check that form is filled in ok
 if (!$first_time){
   if (empty($_POST["first_name"]) || empty($_POST["last_name"])) {
-      echo 'Name is not filled in correctly.';
+      echo 'Name is not filled in correctly.<br>';
       $output_form = true;
   }
   if (empty($_POST['e_mail'])) {
-      echo 'E-mail is not filled in correctly.';
+      echo 'E-mail is not filled in correctly.<br>';
       $output_form = true;
   }
   if (empty($_POST['phone_nr'])) {
-      echo 'Phone number is not filled in correctly.';
+      echo 'Phone number is not filled in correctly.<br>';
       $output_form = true;
   }
 }
+//User has written form correctly =>  save to database
 if (!$output_form){
-  //save to database
   $dbconn = connectToDB();
   $query;
   if ($newContact){
@@ -69,7 +75,7 @@ if (!$output_form){
   //go to showing_persons page
   header('Location: show_contacts.php');
 }
-//first time and changing contact -> retrieve person from database
+//changing contact -> retrieve person from database
 elseif (!$newContact) {
     $dbconn = connectToDB();
     $selectQuery = "SELECT * FROM " .$GLOBALS['database'].".persons WHERE " . $GLOBALS['database'] . ".persons.id =" . "$id";

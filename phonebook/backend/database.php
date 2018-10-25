@@ -1,15 +1,17 @@
 <?php
+/*
+//values for https://johansserver.000webhostapp.com/phonebook/show_contacts.php
 $host = "localhost";
 $user = "id6948683_root";
 $pwd = "banan";
 $database = "id6948683_phonebook";
-
-/*$host = "localhost";
+*/
+$host = "localhost";
 $user = "root";//"id6948683_root";
 $pwd = "";//"banan";
 $database = "phonebook";//"id6948683_phonebook";*/
-/*
- Convenient methods to abstract away which database is used.
+
+/* Convenient methods to abstract away which database is used.
    Parameters might need to change in these functions in case of change to different RDBMS however.
 */
 function connectToDB()

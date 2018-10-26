@@ -26,7 +26,7 @@ $phone_nr = '';
 if (isset($_REQUEST['id']) && $_REQUEST['id'] != '-1') {
     $newContact = false;
 
-    //to remove SQL Injection risk: id should only be able to store numbers
+    //to remove SQL Injection risk: id should only be able to store (positive) numbers
     $id = preg_replace(array('/[^0-9]/'), '',$_REQUEST['id']);
 }
 
@@ -46,7 +46,7 @@ if (!$first_time){
       echo 'Name is not filled in correctly.<br>';
       $output_form = true;
   }
-  if (empty($_POST['e_mail'])) {
+  if (!filter_var($_POST['e_mail'], FILTER_VALIDATE_EMAIL)) {
       echo 'E-mail is not filled in correctly.<br>';
       $output_form = true;
   }

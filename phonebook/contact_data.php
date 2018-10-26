@@ -74,7 +74,7 @@ if (!$output_form){
   //go to showing_persons page
   header('Location: show_contacts.php');
 }
-//changing contact -> retrieve person from database
+//changing contact AND form should be outputed -> retrieve person from database
 elseif (!$newContact) {
     $dbconn = connectToDB();
     $selectQuery = "SELECT * FROM " .$GLOBALS['database'].".persons WHERE " . $GLOBALS['database'] . ".persons.id =" . "$id";

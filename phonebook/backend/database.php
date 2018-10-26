@@ -8,7 +8,7 @@ $database = "id6948683_phonebook";
 */
 $host = "localhost";
 $user = "root";//"id6948683_root";
-$pwd = "";//"banan";
+$pwd = "banan";//"banan";
 $database = "phonebook";//"id6948683_phonebook";*/
 
 /* Convenient methods to abstract away which database is used.

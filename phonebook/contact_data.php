@@ -10,7 +10,7 @@ This file is self referencing (recursive) => if form is not properly written by 
 include("backend/database.php");
 
 //new contact OR changing contact
-$newContact = false;
+$newContact = true;
 $first_time = true;
 $output_form = false;
 
@@ -23,12 +23,11 @@ $e_mail = '';
 $phone_nr = '';
 
 //if it exists, retrieve id
-if (isset($_REQUEST['id'])) {
-    $id = $_REQUEST['id'];
-}
+if (isset($_REQUEST['id']) && $_REQUEST['id'] != '-1') {
+    $newContact = false;
 
-if ($id == '-1'){
-  $newContact = true;
+    //to remove SQL Injection risk: id should only be able to store numbers
+    $id = preg_replace(array('/[^0-9]/'), '',$_REQUEST['id']);
 }
 
 if (isset ($_POST['submit_contact'])){
@@ -70,6 +69,8 @@ if (!$output_form){
     WHERE id=$id";
   }
   $result = doQuery($dbconn, $query);
+
+
   closeDB($dbconn);
 
   //go to showing_persons page

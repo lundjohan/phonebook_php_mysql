@@ -11,7 +11,6 @@ include("backend/database.php");
 
 //new contact OR changing contact
 $newContact = true;
-$first_time = true;
 $output_form = false;
 
 /*case id == -1 => this file deals with new Contact,
@@ -31,17 +30,12 @@ if (isset($_REQUEST['id']) && $_REQUEST['id'] != '-1') {
 }
 
 if (isset ($_POST['submit_contact'])){
-  $first_time = false;
   $first_name = $_POST['first_name'];
   $last_name = $_POST['last_name'];
   $e_mail = $_POST['e_mail'];
   $phone_nr = $_POST['phone_nr'];
-}
-else{
-  $output_form = true;
-}
-//check that form is filled in ok
-if (!$first_time){
+
+  //check that form is filled in ok
   if (empty($_POST["first_name"]) || empty($_POST["last_name"])) {
       echo 'Name is not filled in correctly.<br>';
       $output_form = true;
@@ -55,6 +49,10 @@ if (!$first_time){
       $output_form = true;
   }
 }
+else{
+  $output_form = true;
+}
+
 //User has written form correctly =>  save to database
 if (!$output_form){
   $dbconn = connectToDB();

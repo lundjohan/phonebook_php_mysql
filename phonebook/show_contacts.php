@@ -14,8 +14,8 @@ else{
 }
 
 //Retrieve data from database
-$stmt = $pdo->prepare("SELECT * FROM " . $GLOBALS['db'] . ".persons ORDER BY ?");
-$stmt -> execute([$orderBy]);
+$stmt = $pdo->prepare("SELECT * FROM " . $GLOBALS['db'] . ".persons ORDER BY $orderBy");
+$stmt -> execute([]);
 $contacts = $stmt->fetchAll();
 ?>
 <html>

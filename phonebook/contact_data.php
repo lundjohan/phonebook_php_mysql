@@ -26,8 +26,8 @@ $phone_nr = '';
 if (isset($_REQUEST['id']) && $_REQUEST['id'] != '-1') {
     $newContact = false;
 
-    //to remove SQL Injection risk: id should only be able to store (positive) numbers
-    $id = preg_replace(array('/[^0-9]/'), '',$_REQUEST['id']);
+    //to remove SQL Injection risk: wash variable
+    $id = filter_var($_REQUEST['id'], FILTER_SANITIZE_NUMBER_INT);
 }
 
 if (isset ($_POST['submit_contact'])){

@@ -7,7 +7,7 @@ This file can represent
 This file is self referencing (recursive) => if form is not properly written by user,
   then it will be shown to user which form data he needs to do better.
 */
-include("backend/database.php");
+include("backend/pdo_connect.php");
 
 //new contact OR changing contact
 $newContact = true;
@@ -25,7 +25,7 @@ $phone_nr = '';
 if (isset($_REQUEST['id']) && $_REQUEST['id'] != '-1') {
     $newContact = false;
 
-    //to remove SQL Injection risk: wash variable
+    //to remove SQL Injection risk: wash id variable
     $id = filter_var($_REQUEST['id'], FILTER_SANITIZE_NUMBER_INT);
 }
 
@@ -55,37 +55,30 @@ else{
 
 //User has written form correctly =>  save to database
 if (!$output_form){
-  $dbconn = connectToDB();
-  $query;
   if ($newContact){
-    $query = "INSERT INTO " . $GLOBALS['database'] . ".persons (first_name, last_name, email_address, phone_number)
-    values ('$first_name', '$last_name', '$e_mail', '$phone_nr')";
+    $stmt = $pdo->prepare("INSERT INTO " . $GLOBALS['db'] . ".persons (first_name, last_name, email_address, phone_number) VALUES
+    (?, ?, ?, ?)");
+    $stmt ->execute([$first_name, $last_name, $e_mail, $phone_nr]);
   }
   else{
-    $query = "UPDATE " . $GLOBALS['database'] . ".persons
-    SET first_name='$first_name', last_name='$last_name', email_address='$e_mail',  phone_number='$phone_nr'
-    WHERE id=$id";
+    $stmt = $pdo->prepare("UPDATE " . $GLOBALS['db'] . ".persons SET first_name=?, last_name=?, email_address=?,  phone_number=?
+    WHERE id=?");
+    $stmt ->execute([$first_name, $last_name, $e_mail, $phone_nr, $id]);
   }
-  $result = doQuery($dbconn, $query);
-
-
-  closeDB($dbconn);
 
   //go to showing_persons page
   header('Location: show_contacts.php');
 }
 //changing contact AND form should be outputed -> retrieve person from database
 elseif (!$newContact) {
-    $dbconn = connectToDB();
-    $selectQuery = "SELECT * FROM " .$GLOBALS['database'].".persons WHERE " . $GLOBALS['database'] . ".persons.id =" . "$id";
-    $queryResult = doQuery($dbconn, $selectQuery);
-    $row = mysqli_fetch_array($queryResult);
-    freeResultAndClose($dbconn, $queryResult);
 
-    $first_name = $row['first_name'];
-    $last_name = $row['last_name'];
-    $e_mail = $row['email_address'];
-    $phone_nr = $row['phone_number'];
+  $stmt = $pdo->prepare("SELECT * FROM " . $GLOBALS['db'].".persons WHERE " . $GLOBALS['db'] . ".persons.id = ?");
+  $stmt -> execute([$id]);
+  $row = $stmt->fetch();
+  $first_name = $row['first_name'];
+  $last_name = $row['last_name'];
+  $e_mail = $row['email_address'];
+  $phone_nr = $row['phone_number'];
 }
 ?>
 

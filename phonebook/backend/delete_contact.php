@@ -1,12 +1,11 @@
 <?php
-//receive id for person than should be removed
-$idNr = $_REQUEST['id'];
+//receive id for person that should be removed, only allow numbers
+$idNr = filter_var($_REQUEST['id'], FILTER_SANITIZE_NUMBER_INT);
+
 //database operation
-include 'database.php';
-$dbconn = connectToDB();
-$query = "DELETE FROM " .$GLOBALS['database']. ".persons WHERE id = $idNr";
-$queryResult = doQuery($dbconn, $query);
-closeDB($dbconn);
+include("pdo_connect.php");
+$stmt = $pdo->prepare("DELETE FROM " .$GLOBALS['database']. ".persons WHERE id = ?");
+$stmt -> execute([$idNr]);
 
 //go to page
 header('Location: ../show_contacts.php');

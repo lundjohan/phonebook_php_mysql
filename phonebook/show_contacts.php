@@ -1,5 +1,5 @@
 <?php
-include 'backend/database.php';
+include 'backend/pdo_connect.php';
 /*
 This file show the contacts to the user.
 */
@@ -14,22 +14,9 @@ else{
 }
 
 //Retrieve data from database
-$dbconn = connectToDB();
-$selectQuery = "SELECT * FROM " . $GLOBALS['database'] . ".persons ORDER BY $orderBy";
-$queryResult = doQuery($dbconn, $selectQuery);
-$rows = array();
-while ($row = mysqli_fetch_array($queryResult)) {
-    $person = new stdClass();
-    $person->id = $row['id'];
-    $person->firstName =$row['first_name'];
-    $person->lastName = $row['last_name'];
-    $person->email = $row['email_address'];
-    $person->phoneNumber = $row['phone_number'];
-    array_push($rows, $row);
-}
-
-// Free queryResultset
-freeResultAndClose($dbconn, $queryResult);
+$stmt = $pdo->prepare("SELECT * FROM " . $GLOBALS['db'] . ".persons ORDER BY ?");
+$stmt -> execute([$orderBy]);
+$contacts = $stmt->fetchAll();
 ?>
 <html>
 
@@ -61,7 +48,7 @@ freeResultAndClose($dbconn, $queryResult);
 
 <?php
 /*Complete table with data from database*/
-    foreach ($rows as $row){
+    foreach ($contacts as $row){
       echo "<tr><td>" . $row['id'] ."</td><td>" .
       $row['first_name'] . "</td><td>" .$row['last_name'] . "</td><td>" . $row['email_address'] . "</td>".
         "<td>".$row['phone_number'] . "</td>

@@ -7,7 +7,7 @@ function connectToDB()
 {
     $conn = mysqli_connect($GLOBALS['host'], $GLOBALS['user'], $GLOBALS['pass'], $GLOBALS['db'])
         or die('Could not connect: ' . mysqli_connect_errno());
-    mysqli_set_charset($conn,"utf8");
+    mysqli_set_charset($conn,"utf8mb4");
     return $conn;
 }
   function doQuery($dbconn, $query)

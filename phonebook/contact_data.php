@@ -3,11 +3,9 @@
 This file can represent
   1. Adding a new contact.
   2. Changing an exisiting contact.
-  It knows the difference by checking that the incoming $_REQUEST['id'] value is valid (Changing) or not (Adding).
-This file is self referencing (recursive) => if form is not properly written by user,
-  then it will be shown to user which form data he needs to do better.
 */
 include("backend/pdo_connect.php");
+include("backend/database.php");
 
 //new contact OR changing contact
 $newContact = true;
@@ -30,10 +28,14 @@ if (isset($_REQUEST['id']) && $_REQUEST['id'] != '-1') {
 }
 
 if (isset ($_POST['submit_contact'])){
-  $first_name = $_POST['first_name'];
-  $last_name = $_POST['last_name'];
-  $e_mail = $_POST['e_mail'];
-  $phone_nr = $_POST['phone_nr'];
+
+  //escape incoming variables for extra security
+  $conn = connectToDB();
+  $first_name = mysqli_real_escape_string($conn, $_REQUEST['first_name']);
+  $last_name = mysqli_real_escape_string($conn, $_REQUEST['last_name']);
+  $e_mail = mysqli_real_escape_string($conn, $_REQUEST['e_mail']);
+  $phone_nr = mysqli_real_escape_string($conn, $_REQUEST['phone_nr']);
+  closeDB($conn);
 
   //check that form is filled in ok
   if (empty($_POST["first_name"]) || empty($_POST["last_name"])) {

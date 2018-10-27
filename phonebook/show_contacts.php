@@ -1,19 +1,23 @@
 <?php
 include 'backend/pdo_connect.php';
+include 'backend/database.php';
 /*
 This file show the contacts to the user.
 */
 
+
+$orderBy = 'id';
 /*Retrieve list sort order from users choice*/
-$orderBy;
 if (isset($_REQUEST['orderBy'])){
-  $orderBy = $_REQUEST['orderBy'];
-}
-else{
-  $orderBy = 'id';
+  /* need to connect to database to use mysqli... */
+  $conn = connectToDB();
+  $orderBy = mysqli_real_escape_string($conn, $_REQUEST['orderBy']);
+  closeDB($conn);
 }
 
-//Retrieve data from database
+/*Retrieve data from database. NB: In PDO, ORDER BY cannot use placeholders.
+But we should be safe from SQL Injection here anyway thanks to escaping-string above.
+*/
 $stmt = $pdo->prepare("SELECT * FROM " . $GLOBALS['db'] . ".persons ORDER BY $orderBy");
 $stmt -> execute([]);
 $contacts = $stmt->fetchAll();

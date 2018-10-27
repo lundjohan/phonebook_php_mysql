@@ -1,5 +1,12 @@
 <?php
 
+/*values for https://johansserver.000webhostapp.com/phonebook/show_contacts.php
+$host = "localhost";
+$db = "id6948683_phonebook";
+$user = "id6948683_root";
+$pass = "banan";
+$charset = 'utf8mb4';
+*/
 $host = 'localhost';
 $db   = 'phonebook';
 $user = 'root';

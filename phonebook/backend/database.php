@@ -1,23 +1,13 @@
 <?php
-/*
-//values for https://johansserver.000webhostapp.com/phonebook/show_contacts.php
-$host = "localhost";
-$user = "id6948683_root";
-$pwd = "banan";
-$database = "id6948683_phonebook";
-*/
-$host = "localhost";
-$user = "root";//"id6948683_root";
-$pwd = "banan";//"banan";
-$database = "phonebook";//"id6948683_phonebook";*/
 
 /* Convenient methods to abstract away which database is used.
    Parameters might need to change in these functions in case of change to different RDBMS however.
 */
 function connectToDB()
 {
-    $conn = mysqli_connect($GLOBALS['host'], $GLOBALS['user'], $GLOBALS['pwd'], $GLOBALS['database'])
+    $conn = mysqli_connect($GLOBALS['host'], $GLOBALS['user'], $GLOBALS['pass'], $GLOBALS['db'])
         or die('Could not connect: ' . mysqli_connect_errno());
+    mysqli_set_charset($conn,"utf8");
     return $conn;
 }
   function doQuery($dbconn, $query)

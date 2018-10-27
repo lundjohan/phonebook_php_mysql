@@ -1,6 +1,6 @@
 # phonebook_php_mysql
 
-Simple (I guess typical) "phonebook" application written in PHP towards a mySQL database.
+Simple (I guess typical) "phonebook" application written in PHP towards a MySQL database.
 I am using PDO and mysqli_real_escape_string to remove chance of SQL Injections.
 
 You can run the program here:

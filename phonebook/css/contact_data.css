@@ -1,0 +1,13 @@
+ input[name=e_mail] {
+   padding-right: 200px;
+ }
+
+ @media only screen and (max-width: 475px) {
+   input[name=e_mail] {
+     padding-right: 50px;
+   }
+   td {
+     display: block;
+     padding-bottom: 5px;
+   }
+ }

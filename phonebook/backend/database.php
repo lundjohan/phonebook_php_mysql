@@ -1,7 +1,7 @@
 <?php
 
-/* Convenient methods to abstract away which database is used.
-   Parameters might need to change in these functions in case of change to different RDBMS however.
+/*
+This file is in this projet solely here for mysqli_real_escape_string
 */
 function connectToDB()
 {

@@ -24,13 +24,6 @@
    border-radius: 4px;
  }
 
- input[name=full_name] {
-   padding-right: 70px;
- }
-
- input[name=e_mail] {
-   padding-right: 200px;
- }
 
  .sweet_btn {
    padding-top: 6px;

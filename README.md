@@ -11,6 +11,7 @@ Don't use 000webhostapp as server again:
   it has gotten stuck on the wrong login and saved the cache, and navigation is quite illogical.
   
 When setting up project on server, run this SQL command to set up database (only one table in this simple project):
+
 CREATE TABLE `persons` (
  `id` int(3) NOT NULL AUTO_INCREMENT,
  `first_name` varchar(15) COLLATE utf8_unicode_ci NOT NULL,

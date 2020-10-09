@@ -4,7 +4,7 @@ $idNr = filter_var($_REQUEST['id'], FILTER_SANITIZE_NUMBER_INT);
 
 //database operation
 include("pdo_connect.php");
-$stmt = $pdo->prepare("DELETE FROM " .$GLOBALS['database']. ".persons WHERE id = ?");
+$stmt = $pdo->prepare("DELETE FROM " .$GLOBALS['db']. ".persons WHERE id = ?");
 $stmt -> execute([$idNr]);
 
 //go to page

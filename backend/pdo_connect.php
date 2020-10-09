@@ -1,10 +1,10 @@
 <?php
 
 /*values for https://johansserver.000webhostapp.com/phonebook/show_contacts.php
-$host = "localhost";
-$db = "id6948683_phonebook";
-$user = "id6948683_root";
-$pass = "banan";
+Database name: id15070725_phonebook
+username: id15070725_root
+host: localhost
+passw: 2storaBananer!
 $charset = 'utf8mb4';
 */
 $host = 'localhost';
